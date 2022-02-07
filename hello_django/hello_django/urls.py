@@ -21,5 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # quando não coloca o tipo, identifica como string
-    path('hello/<nome>/<int:idade>', views.hello)
+    path('hello/<nome>/<int:idade>/', views.hello),
+    path('soma/<int:numero1>/<int:numero2>/', views.soma),
+    path('subtracao/<int:numero1>/<int:numero2>/', views.subtracao),
+    path('multiplicacao/<int:numero1>/<int:numero2>/', views.multiplicacao),
+    path('divisao/<int:numero1>/<int:numero2>/', views.divisao)
 ]
