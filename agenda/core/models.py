@@ -19,10 +19,13 @@ class Evento(models.Model):
     #models.CASCADE --> se for excluido o usuario, exclui também os eventos dele
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    #tabela
+    #a  tabela é chamada por 'evento'
     class Meta:
         db_table = 'evento'
 
     def __str__(self):
-        #sempre que chamar o título, retorna
+        #sempre que chamar o título, retorna e mostra o nome do título
         return self.titulo
+
+    def get_data_evento(self):
+        return self.data_evento.strftime('%d/%m/%Y %Hh%M')
