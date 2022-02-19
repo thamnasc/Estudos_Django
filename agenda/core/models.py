@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
 
 class Evento(models.Model):
     titulo = models.CharField(max_length=100)
@@ -14,6 +13,9 @@ class Evento(models.Model):
     #captura a data que o usuário inseriu o evento no bacno
     #auto_now insere automaticamente a hora atual, independente do usuário
     data_criacao = models.DateTimeField(auto_now=True)
+
+    #para escrever o local ou onde vai acontecer o evento
+    local_evento = models.TextField(default='', blank=True, null=True)
 
     #para criar multiplos usuarios
     #models.CASCADE --> se for excluido o usuario, exclui também os eventos dele
@@ -29,3 +31,9 @@ class Evento(models.Model):
 
     def get_data_evento(self):
         return self.data_evento.strftime('%d/%m/%Y %Hh%M')
+
+    def get_local_evento(self):
+        return self.local_evento
+
+    def get_data_input_evento(self):
+        return self.data_evento.strftime('%Y-%m-%dT%H:%M')
